@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="description" content="">
+    <title>Idő számológép</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <link rel="preload" href="//fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,400;1,700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,400;1,700&display=swap&display=swap"></noscript>
+    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+    <link href="//cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style type="text/css">
+        .fa-fast-spin {
+            -webkit-animation: fa-spin 0.5s infinite linear;
+            animation: fa-spin 0.5s infinite linear;
+        }
+        
+        .btn-white {
+            background-color: white !important;
+            border-radius: 24px !important;
+        }
+        
+        .glassify {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(2.3px);
+            -webkit-backdrop-filter: blur(2.3px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+         ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+    </style>
+</head>
+
+<body style="overscroll-behavior-y: contain;">
+    <section data-bs-version="5.1" class="form1 cid-sTV8jI5SSj mbr-fullscreen" id="form1-0">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                    <form id="AddTime_Time_Form" class="mbr-form form-with-styler">
+                        <div class="row">
+                            <div id="calculationResult" style="display: none;" data-form-alert="" class="alert alert-success col-12">Betöltés...</div>
+                        </div>
+
+
+
+                        <div class="dragArea row">
+                            <div class="col-12">
+                                <h1 class="mbr-section-title mb-4 mbr-fonts-style align-center display-2">
+                                    <strong><i class="fad fa-clock"></i> Idő számológép</strong></h1>
+                            </div>
+                            <div name="TemplateDateTime_AddTime_SelectionDiv" class="col-md col-12 form-group mb-3" data-for="email">
+                                <select id="AddTime_Time_inputTime_Selection" class="form-control">
+                                <option value="curDateTime_plus_quarter">Jelenlegi idő és dátum + negyed óra</option>
+                                <option value="curDateTime_plus_half">Jelenlegi idő és dátum + fél óra</option>
+                                <option value="curDateTime_plus_thirdquarter">Jelenlegi idő és dátum + háromnegyed óra</option>
+                                <option value="custom">Egyedi dátum és idő megadása</option>
+                            </select>
+                            </div>
+                            <div style="display: none;" name="CustomDateTime_AddTime_SelectionDiv" class="col-md col-12 form-group mb-3" data-for="email">
+                                <input min="1" id="AddTime_Time_inputTime" type="datetime-local" class="form-control"><button class="btn btn-info display-4" style="display: none; background-color: rgb(255, 187, 0) !important;" type="button" id=""><i class="fas fa-undo"></i> Visszaállítás</button>
+                            </div>
+                            <div style="display: none;" name="CustomDateTime_AddTime_SelectionDiv" class="col-md col-12 form-group mb-3" data-for="email">
+                                <select id="AddTime_Time_operator" class="form-control">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                            </div>
+                            <div style="display: none;" name="CustomDateTime_AddTime_SelectionDiv" class="col-md col-12 form-group mb-3" data-for="email">
+                                <select id="AmountAdd_Time_Selection" class="form-control">
+                                <option value="quarter">Negyed óra</option>
+                                <option value="half">Fél óra</option>
+                                <option value="thirdquarter">Háromnegyed óra</option>
+                                <option value="custom">Egyedi</option>
+                            </select>
+                                <input style="display: none;" min="1" id="AmountAdd_Time_custom" type="number" class="form-control"><button class="btn btn-info display-4" style="display: none; background-color: rgb(255, 187, 0) !important;" type="button"
+                                    id="ratherText_AddTime_Time"><i class="fas fa-undo"></i> Visszaállítás</button>
+                            </div>
+                            <div id="measurementInputDivContainer" style="display: none;" class="col-md col-12 form-group mb-3" data-for="email">
+                                <select id="AddTime_Time_measurement" class="form-control">
+                                <option value="seconds">Másodperc</option>
+                                <option value="minutes">Perc</option>
+                                <option value="hours">Óra</option>
+                            </select>
+                            </div>
+                            <div class="mbr-section-btn col-12 col-md-auto d-inline-flex">
+                                <button name="CustomDateTime_AddTime_SelectionDiv" onclick="setToDefault();" type="button" class="btn btn-info btn-white" style="display: none; width: 30%; border-radius: 24px 0px 0px 24px !important; background-color: rgb(255, 187, 0) !important;"><i class="fad fa-undo"></i></button>
+                                <button name="CustomDateTime_AddTime_SelectionDiv" type="submit" class="btn btn-info btn-white" style="display: none; border-radius: 0px 24px 24px 0px !important;">Számolás</button>
+                                <button id="AddTime_Time_submitBtn" type="submit" class="btn btn-info btn-white display-4">Számolás</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section data-bs-version="5.1" class="content5 cid-sTV9jsJanP" id="content5-1">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+
+                    <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Remélem tetszett! :)</strong></h4>
+                    <p class="mbr-text mbr-fonts-style display-7"></p>
+                    <p class="mbr-text mbr-fonts-style display-7">Fejlesztette: Rab Károly Sándor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="assets/swal.js"></script>
+<script type="text/javascript">
+    function ModalAppear(title, text, confirmButtonText, icon) {
+        Swal.fire({
+            title,
+            customClass: {
+                confirmButton: 'btn btn-info btn-white'
+            },
+            showClass: {
+                popup: 'animate__animated animate__backInUp'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            },
+            text,
+            icon,
+            // icon: 'error',
+            confirmButtonText
+        });
+        document.getElementsByClassName("swal2-modal").classList.Add("classify");
+    }
+
+    function getDifferenceInDays(date1, date2) {
+        const diffInMs = Math.abs(date2 - date1);
+        return diffInMs / (1000 * 60 * 60 * 24);
+    }
+
+    function getDifferenceInHours(date1, date2) {
+        const diffInMs = Math.abs(date2 - date1);
+        return diffInMs / (1000 * 60 * 60);
+    }
+
+    function getDifferenceInMinutes(date1, date2) {
+        const diffInMs = Math.abs(date2 - date1);
+        return diffInMs / (1000 * 60);
+    }
+
+    function getDifferenceInSeconds(date1, date2) {
+        const diffInMs = Math.abs(date2 - date1);
+        return diffInMs / 1000;
+    }
+
+    function setToDefault() {
+        document.getElementById("AmountAdd_Time_Selection").value = "quarter";
+        document.getElementById("AddTime_Time_inputTime_Selection").value = "curDateTime_plus_quarter";
+        testInterval_2 = setInterval(AddTime_Time_FromDateTime_Interval, 100);
+    }
+
+    var testInterval = setInterval(AddTime_Time_Selector_Interval, 100);
+    var testInterval_2 = setInterval(AddTime_Time_FromDateTime_Interval, 100);
+    var today, dd, mm, yyyy;
+
+    function AddTime_Time_FromDateTime_Interval() {
+        let AmountAdd_DateTime_Switch = document.getElementById("AddTime_Time_inputTime_Selection").value;
+        switch (AmountAdd_DateTime_Switch) {
+            case 'curDateTime_plus_quarter':
+                for (let i = 0; i < document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length; i++) {
+                    document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[i].style.display = "none";
+                }
+                document.getElementsByName("TemplateDateTime_AddTime_SelectionDiv")[0].style.display = "block";
+                document.getElementById("AddTime_Time_submitBtn").style.display = "block";
+                today = new Date();
+                dd = String(today.getDate()).padStart(2, '0');
+                mm = String(today.getMonth() + 1).padStart(2, '0'); // A Január az értelemszerűen nulla
+                yyyy = today.getFullYear();
+                document.getElementById("AddTime_Time_inputTime").value = `${yyyy}-${mm}-${dd}T${today.getHours()}:${today.getMinutes()}`;
+                document.getElementById("AddTime_Time_operator").value = "+";
+                document.getElementById("AmountAdd_Time_Selection").value = "quarter";
+                break;
+            case 'curDateTime_plus_half':
+                for (let i = 0; i < document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length; i++) {
+                    document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[i].style.display = "none";
+                }
+                document.getElementsByName("TemplateDateTime_AddTime_SelectionDiv")[0].style.display = "block";
+                document.getElementById("AddTime_Time_submitBtn").style.display = "block";
+                today = new Date();
+                dd = String(today.getDate()).padStart(2, '0');
+                mm = String(today.getMonth() + 1).padStart(2, '0'); // A Január az értelemszerűen nulla
+                yyyy = today.getFullYear();
+                document.getElementById("AddTime_Time_inputTime").value = `${yyyy}-${mm}-${dd}T${today.getHours()}:${today.getMinutes()}`;
+                document.getElementById("AddTime_Time_operator").value = "+";
+                document.getElementById("AmountAdd_Time_Selection").value = "half";
+                break;
+            case 'curDateTime_plus_thirdquarter':
+                for (let i = 0; i < document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length; i++) {
+                    document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[i].style.display = "none";
+                }
+                document.getElementsByName("TemplateDateTime_AddTime_SelectionDiv")[0].style.display = "block";
+                document.getElementById("AddTime_Time_submitBtn").style.display = "block";
+                today = new Date();
+                dd = String(today.getDate()).padStart(2, '0');
+                mm = String(today.getMonth() + 1).padStart(2, '0'); // A Január az értelemszerűen nulla
+                yyyy = today.getFullYear();
+                document.getElementById("AddTime_Time_inputTime").value = `${yyyy}-${mm}-${dd}T${today.getHours()}:${today.getMinutes()}`;
+                document.getElementById("AddTime_Time_operator").value = "+";
+                document.getElementById("AmountAdd_Time_Selection").value = "thirdquarter";
+                break;
+            case 'custom':
+                for (let i = 0; i < document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length; i++) {
+                    document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[i].style.display = "block";
+                }
+                document.getElementsByName("TemplateDateTime_AddTime_SelectionDiv")[0].style.display = "none";
+                document.getElementById("AddTime_Time_submitBtn").style.display = "none";
+                document.getElementById("AddTime_Time_inputTime").value = ``;
+                document.getElementById("AmountAdd_Time_Selection").value = "quarter";
+                clearInterval(testInterval_2);
+                break;
+            default:
+                // EasterEgg :D
+                window.alert("Érvénytelen opció! Vajon, miért módosíthatta a felhasználó az oldal kódját? :)");
+                break;
+        }
+    }
+
+    function AddTime_Time_Selector_Interval() {
+        // Azért interval-al oldottam meg, mert a "change" eventListenerrel valamiért nem akart működni egyáltalán. Pedig az sokkal jobb megoldás lenne ennél.
+        let AmountAdd_Time_custom_value = 0;
+        let AmountAdd_Time_selectedValue = document.getElementById("AmountAdd_Time_Selection").value;
+        switch (AmountAdd_Time_selectedValue) {
+            case 'quarter':
+                AmountAdd_Time_custom_value = 15;
+                document.getElementById("measurementInputDivContainer").style.display = "none";
+                document.getElementById("AddTime_Time_measurement").value = "minutes";
+                break;
+            case 'half':
+                AmountAdd_Time_custom_value = 30;
+                document.getElementById("measurementInputDivContainer").style.display = "none";
+                document.getElementById("AddTime_Time_measurement").value = "minutes";
+                break;
+            case 'thirdquarter':
+                AmountAdd_Time_custom_value = 45;
+                document.getElementById("measurementInputDivContainer").style.display = "none";
+                document.getElementById("AddTime_Time_measurement").value = "minutes";
+                break;
+            case 'custom':
+                AmountAdd_Time_custom_value = "";
+                document.getElementById("AddTime_Time_measurement").value = "seconds";
+                document.getElementById("measurementInputDivContainer").style.display = "block";
+                document.getElementById("AmountAdd_Time_Selection").style.display = "none";
+                document.getElementById("AmountAdd_Time_custom").style.display = "block";
+                document.getElementById("ratherText_AddTime_Time").style.display = "block";
+                clearInterval(testInterval);
+                break;
+            default:
+                // EasterEgg :D
+                window.alert("Érvénytelen opció! Vajon, miért módosíthatta a felhasználó az oldal kódját? :)");
+                break;
+        }
+        document.getElementById("AmountAdd_Time_custom").value = +AmountAdd_Time_custom_value;
+    }
+
+    document.getElementById("ratherText_AddTime_Time").addEventListener('click', () => {
+        document.getElementById("ratherText_AddTime_Time").style.display = "none";
+        document.getElementById("AmountAdd_Time_custom").style.display = "none";
+        document.getElementById("AmountAdd_Time_Selection").style.display = "block";
+        document.getElementById("AmountAdd_Time_Selection").value = "quarter";
+        testInterval = setInterval(AddTime_Time_Selector_Interval, 100);
+    });
+
+    document.getElementById("AddTime_Time_Form").addEventListener('submit', async(e) => {
+        e.preventDefault();
+        let beIdo = document.getElementById('AddTime_Time_inputTime').value,
+            muvelet = document.getElementById('AddTime_Time_operator').value,
+            mennyiseg = +(document.getElementById('AmountAdd_Time_custom').value),
+            mertekegyseg = document.getElementById('AddTime_Time_measurement').value;
+        if (mennyiseg == 0) return ModalAppear("Van egy kérdésem", "Nem értelek. Mit akarsz számolni, ha a mennyiséget nullaként adtad meg?", "Rendben", "question");
+        else if (mennyiseg < 0) return ModalAppear("Érvénytelen mennyiség!", "Kérlek ne változtass a programkódokon!", "Rendben");
+        else if (mennyiseg >= 2000000025) ModalAppear("Áucs! Héj!", "Attól mert számítógép vagyok nekem is van méltóságom! Nem szeretnék a rabszolgád lenni! Ezt neked kell kiszámolnod!", "Rendben");
+        else {
+            let AlapBeIdo = new Date(beIdo);
+            var operators = {
+                '+': function(a, b) {
+                    return a + b
+                },
+                '-': function(a, b) {
+                    return a - b
+                }
+            };
+            console.log({
+                mertekegyseg
+            });
+            console.log({
+                mennyiseg
+            });
+            switch (mertekegyseg) {
+                case 'seconds':
+                    console.log(`Szerkesztés előtt: ${AlapBeIdo.getHours()}:${AlapBeIdo.getMinutes()}`);
+                    AlapBeIdo.setSeconds(operators[muvelet](AlapBeIdo.getSeconds(), mennyiseg));
+                    console.log(`Szerkesztés után: ${AlapBeIdo.getHours()}:${AlapBeIdo.getMinutes()}`);
+                    break;
+                case 'minutes':
+                    console.log(`Szerkesztés előtt: ${AlapBeIdo.getHours()}:${AlapBeIdo.getMinutes()}`);
+                    AlapBeIdo.setMinutes(operators[muvelet](AlapBeIdo.getMinutes(), mennyiseg));
+                    console.log(`Szerkesztés után: ${AlapBeIdo.getHours()}:${AlapBeIdo.getMinutes()}`);
+                    break;
+                case 'hours':
+                    console.log(`Szerkesztés előtt: ${AlapBeIdo.getHours()}:${AlapBeIdo.getMinutes()}`);
+                    AlapBeIdo.setHours(operators[muvelet](AlapBeIdo.getHours(), mennyiseg));
+                    console.log(`Szerkesztés után: ${AlapBeIdo.getHours()}:${AlapBeIdo.getMinutes()}`);
+                    break;
+                default:
+                    ModalAppear("Érvénytelen mértékegység!", "Nem ismerem ezt a mértékegységet.", "Rendben");
+                    break;
+            }
+
+            document.getElementById("AddTime_Time_submitBtn").innerHTML = `<i class="fas fa-spinner-third fa-fast-spin"></i>`;
+            document.getElementById("AddTime_Time_submitBtn").disabled = true;
+            document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length - 1].innerHTML = `<i class="fas fa-spinner-third fa-fast-spin"></i>`;
+            document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length - 1].disabled = true;
+            document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length - 2].disabled = true;
+
+            let vegDatum = AlapBeIdo;
+            let dd = String(vegDatum.getDate()).padStart(2, '0');
+            let mm = String(vegDatum.getMonth() + 1).padStart(2, '0'); // A Január az értelemszerűen nulla
+            let yyyy = vegDatum.getFullYear();
+            let eredmeny = `${yyyy}.${mm}.${dd} ${String(vegDatum.getHours()).padStart(2, '0')}:${String(vegDatum.getMinutes()).padStart(2, '0')}`;
+
+            document.getElementById("calculationResult").style.display = "block";
+            document.getElementById("calculationResult").innerHTML = `
+            <br><p style="font-size: 20px;"><b>Megszületett az eredmény!</b></p>
+            <p style="font-size: 32px;">Eredmény: ${eredmeny}</p>
+        `;
+
+            document.getElementById("AddTime_Time_submitBtn").innerHTML = "Új számolás";
+            document.getElementById("AddTime_Time_submitBtn").disabled = false;
+            document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length - 1].innerHTML = `Új számolás`;
+            document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length - 1].disabled = false;
+            document.getElementsByName("CustomDateTime_AddTime_SelectionDiv")[document.getElementsByName("CustomDateTime_AddTime_SelectionDiv").length - 2].disabled = false;
+        }
+    });
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/datumok_idopontok/service-worker.js');
+    }
+
+    ModalAppear("Új verzió: v0.0.1", "Kellemes számolást kívánok!", "Köszönöm!", "info");
+</script>
+
+</html>
