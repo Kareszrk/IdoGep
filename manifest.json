@@ -1,7 +1,7 @@
 {
     "name": "Időgép",
     "short_name": "Időgép",
-    "start_url": "/mobile.html",
+    "start_url": "/IdoGep/mobile.html",
     "icons": [{
             "src": "assets/icons/icon-48x48.png",
             "sizes": "48x48",
